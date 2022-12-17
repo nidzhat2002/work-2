@@ -1,0 +1,15 @@
+/Users/nidzatagarzaev/work 2/bin/Debug/net6.0/work 2
+/Users/nidzatagarzaev/work 2/bin/Debug/net6.0/work 2.deps.json
+/Users/nidzatagarzaev/work 2/bin/Debug/net6.0/work 2.runtimeconfig.json
+/Users/nidzatagarzaev/work 2/bin/Debug/net6.0/work 2.dll
+/Users/nidzatagarzaev/work 2/bin/Debug/net6.0/work 2.pdb
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.csproj.AssemblyReference.cache
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.AssemblyInfoInputs.cache
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.AssemblyInfo.cs
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.csproj.CoreCompileInputs.cache
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.dll
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/refint/work 2.dll
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.pdb
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/work 2.genruntimeconfig.cache
+/Users/nidzatagarzaev/work 2/obj/Debug/net6.0/ref/work 2.dll
