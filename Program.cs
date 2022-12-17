@@ -1,14 +1,8 @@
 ﻿Console.Clear();
-Console.Write("Введите 1-е число: ");
+Console.Write("Введите число: ");
 int a = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите 2-е число: ");
-int b = Convert.ToInt32(Console.ReadLine());
 
-int max = a;
-int min = a;
-
-if (b > max) max = b;
-if (b < min) min = b;
-
-Console.WriteLine($"Минимальное из введенных чисел: {min}.");
-Console.WriteLine($"Максимальное из введенных чисел: {max}.");
+if (a % 2 == 0) 
+     Console.WriteLine($"Число {a} является четным.");
+else    
+     Console.WriteLine($"Число {a} является нечетным.");
