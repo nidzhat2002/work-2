@@ -1,20 +1,23 @@
-﻿Console.Clear();
-bool NumberInInterval(int value, int min, int max)
+﻿bool NumberInInterval(int value, int min, int max)
 {
 if (value >= min && value <= max)
-    return true;
+ return true;
 else 
 {
 Console.WriteLine($"Ошибка! Число должно находиться в интервале от {min} до {max}!");
-return false;
+ return false;
 }   
 }
-int n;
 Console.Clear();
+string s;
+int n;
 do
 {
-Console.Write("Веедите трехзначное число: ");
-n = Convert.ToInt32(Console.ReadLine());
-} while (!NumberInInterval(n, 100, 999));
-int m = n / 10 - (n / 100) * 10;
-Console.WriteLine($"Вторая цифра числа: {m}.");
+Console.Write("Веедите пятизначное число: ");
+s = Console.ReadLine();
+n = Convert.ToInt32(s);
+} while (!NumberInInterval(n, 10000, 99999));
+if ((n / 10000 == n % 10) && (n % 10000 / 1000 == n % 100 / 10))
+    Console.WriteLine($"Число {n} - палиндром.");
+else
+    Console.WriteLine($"Число {n} - НЕ палиндром.");
