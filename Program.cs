@@ -1,8 +1,11 @@
 ﻿Console.Clear();
-Console.Write("Веедите число: ");
+Console.Write("Введите число: ");
 int n = Convert.ToInt32(Console.ReadLine());
-int step = 1;
-if (n <= 0) step = -1;
-for (int i = 1; Math.Abs(i) <= Math.Abs(n); i += step)
-    if (i % 2 == 0)
-         Console.Write($"{i} ");
+int m = n;
+if (n < 100)
+    Console.WriteLine($"Третьей цифры у числа {n} нет.");
+else 
+{
+    while (m > 999) m /= 10;
+    Console.WriteLine($"Третья цифра у числа {n}: {m % 10}.");
+}
