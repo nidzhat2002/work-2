@@ -1,10 +1,19 @@
-﻿Console.Clear();
-Console.Write("Веедите число: ");
-int n = Convert.ToInt32(Console.ReadLine());
-int m = n, sum = 0;
-while (m > 0)
-{
-    sum += m % 10;
-    m /= 10;
+﻿void PrintArray(int[] arr)
+{   
+Console.Write("[");
+for (int i = 0; i < arr.Length - 1; i++)
+    Console.Write($"{arr[i]}, ");
+Console.WriteLine($"{arr[arr.Length - 1]}]");
 }
-Console.WriteLine($"Сумма цифр в числе {n} = {sum}.");
+Console.Clear();
+Console.Write("Введите размер массива: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int[] array = new int[n];
+for (int i = 0; i < n; i++)
+{
+ Console.Write($"Введите {i+1}-й элемент массива: ");
+ array[i] = Convert.ToInt32(Console.ReadLine());
+}
+Console.WriteLine();
+Console.Write("Вы ввели массив: ");
+PrintArray(array);
