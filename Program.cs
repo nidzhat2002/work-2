@@ -1,10 +1,16 @@
 ﻿Console.Clear();
-Console.Write("Введите элементы массива: ");
-double[] array = Console.ReadLine().Split(" ").Select(x => Convert.ToDouble(x)).ToArray();
-Console.WriteLine($"Массив: {string.Join(" ", array)}");
-int count = 0;
-foreach (double element in array)
+Console.Write("Введите параметры (k, b) первой прямой: ");
+double[] line1 = Console.ReadLine().Split(" ").Select(x => double.Parse(x)).ToArray();
+Console.Write("Введите параметры (k, b) второй прямой: ");
+double[] line2 =Console.ReadLine().Split(" ").Select(x => double.Parse(x)).ToArray();
+double x, y;
+if (Math.Abs(line1[0] - line2[0]) > 1e-6)
 {
-if (element > 0.0) count++;
+    x = (line2[1] - line1[1]) / (line1[0] - line2[0]);
+    y = line1[0] * x + line1[1];
+    Console.WriteLine($"Точка перечения 2х прямых ({x}, {y}).");
 }
-Console.WriteLine($"Количество положительных элементов в массиве = {count}");
+else 
+{
+    Console.WriteLine("Прямые параллельны.");
+}
