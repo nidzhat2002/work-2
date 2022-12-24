@@ -1,9 +1,10 @@
 ﻿Console.Clear();
-Console.Write("Введите число A: ");
-int a = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите число B: ");
-int b = Convert.ToInt32(Console.ReadLine());
-int res = 1;
-for (int i = 1; i <= b; i++)
-    res *= a;
-Console.WriteLine($"{a} в степени {b} = {res}.");
+Console.Write("Веедите число: ");
+int n = Convert.ToInt32(Console.ReadLine());
+int m = n, sum = 0;
+while (m > 0)
+{
+    sum += m % 10;
+    m /= 10;
+}
+Console.WriteLine($"Сумма цифр в числе {n} = {sum}.");
