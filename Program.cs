@@ -1,36 +1,40 @@
-﻿void InputArray(int[,,] arr)
+﻿void InputMatrix(int[,] matrix)
 {
-    int value = 10;
-    for (int i = 0; i < arr.GetLength(0); i++)
+    void FillNext(int row, int col, int value)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            for (int k = 0; k < arr.GetLength(2); k++)
-            {
-                arr[i, j, k] = value;
-                value++;
-            }
-        }
+        matrix[row, col] = value;
+        if (col < matrix.GetLength(1) - 1 && matrix[row, col + 1] == 0)
+            FillNext(row, col + 1, value + 1);
+        if (row < matrix.GetLength(0) - 1 && matrix[row + 1, col] == 0)
+            FillNext(row + 1, col, value + 1);
+        if (col > 0 && matrix[row, col - 1] == 0)
+            FillNext(row, col - 1, value + 1);
+        if (row > 0 && matrix[row - 1, col] == 0)
+            FillUp(row - 1, col, value + 1);
     }
-}
-void PrintArray(int[,,] arr)
-{
-    for (int i = 0; i < arr.GetLength(0); i++)
+    void FillUp(int row, int col, int value)
     {
-        for (int j = 0; j < arr.GetLength(1); j++)
-        {
-            for (int k = 0; k < arr.GetLength(2); k++)
-            {
-                Console.Write($"{arr[i, j, k]} ({i}, {j}, {k}) \t");
-            }
-            Console.WriteLine();
-        }
+        matrix[row, col] = value;
+        if (row > 0 && matrix[row - 1, col] == 0)
+            FillUp(row - 1, col, value + 1);
+        if (col < matrix.GetLength(1) - 1 && matrix[row, col + 1] == 0)
+            FillNext(row, col + 1, value + 1);
+    }
+    FillNext(0, 0, 1);
+}
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            Console.Write($"{matrix[i, j]} \t");
+        Console.WriteLine();
     }
 }
 Console.Clear();
-Console.Write("Введите размер массива: ");
+Console.Write("Введите размер матрицы: ");
 int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
-int[,,] array = new int[size[0], size[1], size[2]];
-InputArray(array);
-Console.WriteLine("Трехмерный массив:");
-PrintArray(array);
+int[,] matrix = new int[size[0], size[1]];
+InputMatrix(matrix);
+Console.WriteLine("Матрица:");
+PrintMatrix(matrix);
