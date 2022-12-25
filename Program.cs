@@ -1,12 +1,12 @@
-﻿int GetSum(int start, int end)
+﻿int Func(int m, int n)
 {
-    if (start == end) return end;
-    return (start < end) ? GetSum(start + 1, end) + start: 
-                            GetSum(start, end + 1) + end;
+if (m == 0) return n + 1;
+if (n == 0) return Func(m - 1, 1);
+return Func(m - 1, Func(m, n -1));
 }
 Console.Clear();
 Console.Write("Введите число M: ");
 int m = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите число N: ");
 int n = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine($"Сумма чисел от {m} до {n} = {GetSum(m, n)}");
+Console.WriteLine($"Функция Аккерамана A({m},{n}) = {Func(m, n)}");
