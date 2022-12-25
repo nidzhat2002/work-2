@@ -1,32 +1,12 @@
-﻿int NormIndex(int value, int n) => (value >= 0) ? (value % n) : (value % n) + n;
-void FillMatrix(int[,] matrix)
+﻿string GetNumbers(int start, int end)
 {
-    int colCount = matrix.GetLength(1);
-    matrix[0, colCount / 2] = 1;
-    for (int i = 1; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-            matrix[i, j] = matrix[i-1, NormIndex(j - 1, colCount)] + matrix[i-1, NormIndex(j + 1, colCount)];
-    }
-}
-void PrintMatrix(int[,] matrix)
-{
-    for (int i = 0; i < matrix.GetLength(0); i++)
-    {
-        for (int j = 0; j < matrix.GetLength(1); j++)
-        {
-            if (matrix[i, j] == 0)
-                Console.Write($" \t");
-            else    
-                Console.Write($"{matrix[i, j]} \t");
-        }
-        Console.WriteLine();
-    }
+    if (start == end) return end.ToString();
+    return (start < end) ? GetNumbers(start + 1, end) + $", {start}": 
+                            GetNumbers(start, end + 1) + $", {end}";
 }
 Console.Clear();
-Console.Write("Введите количество строк треугольника Паскаля: ");
-int size = Convert.ToInt32(Console.ReadLine());
-int[,] matrix = new int[size, (size - 1) * 2 +1];
-FillMatrix(matrix);
-Console.WriteLine("Треугольник Паскаля:");
-PrintMatrix(matrix);
+Console.Write("Введите число M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите число N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine($"Числа: {GetNumbers(m, n)}");
