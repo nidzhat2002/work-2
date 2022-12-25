@@ -1,34 +1,45 @@
 ﻿void InputMatrix(int[,] matrix)
 {
-    for (int row = 0; row < matrix.GetLength(0); row++)
-        for (int col = 0; col < matrix.GetLength(1); col++)
-            matrix[row, col] = new Random().Next(-10, 11);
-}
-void OutputMatrix(int[,] matrix)
-{
-    for (int row = 0; row < matrix.GetLength(0); row++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int col = 0; col < matrix.GetLength(1); col++)
-            Console.Write($"{matrix[row, col]}\t");
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            matrix[i, j] = new Random().Next(-10, 11); // [-10, 10]
+    }
+}
+void PrintMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+            Console.Write($"{matrix[i, j]} \t");
         Console.WriteLine();
     }
 }
+int[,] ReleaseMatrix(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            for (int k = 0; k < matrix.GetLength(1) - j - 1; k++)
+            {
+                if (matrix[i, k] < matrix[i, k + 1])
+                {
+                    int tmp = matrix[i, k];
+                    matrix[i, k] =  matrix[i, k+1];
+                    matrix[i, k + 1] = tmp;
+                }
+            }
+        }
+    }
+    return matrix;
+}
 Console.Clear();
-Console.Write("Введите размеры матрицы: ");
-int[] size = Console.ReadLine().Trim().Split(" ").Select(x => int.Parse(x)).ToArray();
+Console.Write("Введите размер матрицы: ");
+int[] size = Console.ReadLine().Split(" ").Select(x => int.Parse(x)).ToArray();
 int[,] matrix = new int[size[0], size[1]];
 InputMatrix(matrix);
-Console.WriteLine("Исходная матрица:");
-OutputMatrix(matrix);
-double[] means = new double[size[1]];
-for (int col = 0; col < matrix.GetLength(1); col++)
-{
-    means[col] = 0.0; // лишняя операция (на всякий случай)
-    for (int row = 0; row < matrix.GetLength(0); row++)
-    {
-        means[col] += matrix[row, col];
-    }
-    means[col] /= (double)matrix.GetLength(0);
-}
-Console.WriteLine("Средние арифметические по столбцам: ");
-Console.WriteLine(string.Join("   ",means));
+Console.WriteLine("Начальный массив:");
+PrintMatrix(matrix);
+Console.WriteLine("Конечный массив:");
+PrintMatrix(ReleaseMatrix(matrix));
